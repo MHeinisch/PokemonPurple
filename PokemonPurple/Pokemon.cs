@@ -10,22 +10,23 @@ namespace PokemonPurple
     {
 
         //member variables
+        string name;
         int level;
-        int experiencePoints;
-        int attackStat;
-        int defenseStat;
-        int speedStat;
-        String typeOne;
-        String typeTwo;
-        int typeOneInt;
-        int typeTwoInt;
+        int experiencePoints = 0;
+        //int attackStat;
+        //int defenseStat;
+        //int speedStat;
+        string typeOne;
+        string typeTwo;
+        int typeOneIndex;
+        int typeTwoIndex;
 
-        List<Moves> movesList = new List<Moves>();
+        List<Moves> moveList = new List<Moves>();
 
 
 
         //constructor
-        public Pokemon()
+        public Pokemon(string Species, int Level, /*int AttackStat, int DefenseStat, int SpeedStat,*/ int TypeOneIndex, int TypeTwoIndex)
         {
 
         }

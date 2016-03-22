@@ -10,6 +10,8 @@ namespace PokemonPurple
     {
 
         //member variables
+        int attackTypeIndex;
+
         public string[] typeArray = new string[19];
         public double[,] typeMatchup2DArray = new double[19, 19]; //[row, column] row = attack type, column = target types
 
