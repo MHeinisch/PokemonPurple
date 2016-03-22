@@ -9,24 +9,28 @@ namespace PokemonPurple
     class Pokemon
     {
 
-        //member variables
+        //member variables        
+
+        protected Moves move = new Moves();
+
+        protected string species;
         string name;
         int level;
-        int experiencePoints = 0;
         //int attackStat;
         //int defenseStat;
         //int speedStat;
         string typeOne;
         string typeTwo;
-        int typeOneIndex;
-        int typeTwoIndex;
+        protected int typeOneIndex;
+        protected int typeTwoIndex;
 
-        List<Moves> moveList = new List<Moves>();
+        protected List<Moves> moveList = new List<Moves>();
+
 
 
 
         //constructor
-        public Pokemon(string Species, int Level, /*int AttackStat, int DefenseStat, int SpeedStat,*/ int TypeOneIndex, int TypeTwoIndex)
+        public Pokemon()
         {
 
         }
@@ -34,6 +38,10 @@ namespace PokemonPurple
 
 
         //functions
+        protected virtual void GenerateMoveList()
+        {
+
+        }
         void LevelUp()
         {
 
