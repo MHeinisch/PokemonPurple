@@ -13,14 +13,7 @@ namespace PokemonPurple
 
             SetUp setup = new SetUp();
 
-            setup.FillTypeArray();
-            setup.FillTypeEffectivenessTwoDArray();
-
-            setup.DisplayIntroMessasges();
-
-            setup.SelectNewOrSavedGame();
-
-            setup.CreatePlayerAndRival();
+            setup.SetUpGame();
 
             setup.PlayerObtainFirstPokemon();
 

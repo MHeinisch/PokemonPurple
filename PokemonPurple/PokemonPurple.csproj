@@ -45,6 +45,7 @@
   <ItemGroup>
     <Compile Include="Abandoned Factory.cs" />
     <Compile Include="Alternate Dimension.cs" />
+    <Compile Include="Battle.cs" />
     <Compile Include="Bergmite.cs" />
     <Compile Include="Bulbasaur.cs" />
     <Compile Include="Carbink.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="Dratini.cs" />
     <Compile Include="Ekans.cs" />
     <Compile Include="Espurr.cs" />
+    <Compile Include="Game.cs" />
     <Compile Include="Hawlucha.cs" />
     <Compile Include="Items.cs" />
     <Compile Include="Klink.cs" />
@@ -66,6 +68,7 @@
     <Compile Include="Pinsir.cs" />
     <Compile Include="Player.cs" />
     <Compile Include="Pokemon.cs" />
+    <Compile Include="PrintLine.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Rainforest.cs" />

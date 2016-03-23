@@ -10,7 +10,6 @@ namespace PokemonPurple
     {
 
         //member variables
-        int attackTypeIndex;
 
 
 

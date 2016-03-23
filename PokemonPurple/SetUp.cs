@@ -10,11 +10,12 @@ namespace PokemonPurple
     {
 
         //member variables
-        Trainer player;
-        Trainer rival;
+        public Trainer player;
+        public Trainer rival;
 
-        Types type = new Types();
         UI ui = new UI();
+        PrintLine print = new PrintLine();
+        Types type = new Types();
 
         public string[] typeArray = new string[19];
         public double[,] typeMatchup2DArray = new double[19, 19]; //[row, column] row = attack type, column = target types
@@ -105,7 +106,21 @@ namespace PokemonPurple
 
 
         //functions
+        public void SetUpGame()
+        {
+            GenerateTypeArrays();
+            print.DisplayGameNameAndRules();
+            //ui.SelectNewOrSavedGame();                                            //only create if new game, otherwise load
+            CreatePlayer();
+            CreateRival();
+            print.EnterGameMessage(player);
+        }
 
+        public void GenerateTypeArrays()
+        {
+            FillTypeArray();
+            FillTypeEffectivenessTwoDArray();
+        }
         public void FillTypeArray()
         {
             typeArray[0] = "";
@@ -359,127 +374,39 @@ namespace PokemonPurple
             typeMatchup2DArray[18, 16] = 2;
             typeMatchup2DArray[18, 17] = .5;
         }
-        //intro messages
-        public void DisplayIntroMessasges()
-        {
-            Console.WriteLine("Welcome to Pokemon Purple!\n");
-            Console.WriteLine("Pokemon Purple is a text-based, nuzlocke version of the original Gen 1 Pokemon games.");
-            Console.WriteLine("The following is a quick rundown of the nuzlocke rules for any Pokemon game:\n");
-            Console.WriteLine("You may only capture the first Pokemon you encounter in each new area. You will not encounter a Pokemon that you've already captured again.");
-            Console.WriteLine("If any of your Pokemon faint in battle, they are lost permanently. Be careful!");
-            Console.WriteLine("Extra Pokemon may be stored in a PC and retrieved for later use.\n");
-        }
 
-        public void SelectNewOrSavedGame()
+        public void CreatePlayer()
         {
-            Console.WriteLine("Please select a game option:\n");
-            while (ui.userInputGameSelection != 1)
-            {
-                Console.WriteLine("New Game: (1)");
-                Int32.TryParse(Console.ReadLine(), out ui.userInputGameSelection);
-                if (ui.userInputGameSelection != 1)
-                {
-                    Console.WriteLine("Oops! Invalid entry, please try again.\n");
-                }
-            }
-        }
-
-        public void CreatePlayerAndRival()
-        {
-            Console.WriteLine("Hello there! Welcome to the world of POKEMON!");
-            Console.WriteLine("My name is OAK! People call me the POKEMON PROF!");
-            Console.WriteLine("This world is inhabited by creatures called POKEMON!");
-            Console.WriteLine("For some people, Pokemon are pets. Others use them for fights.");
-            Console.WriteLine("Myself...");
-            Console.WriteLine("I study POKEMON as a profession.");
-            Console.WriteLine("First, what is your name?\n");
-
+            print.DisplayPlayerCreationMessage();
             player = new Player();
-            player.name = Console.ReadLine(); ;
-
+            player.name = ui.GetUserInputName();
             Console.WriteLine("Right! So your name is " + player.name + "!\n");
-            Console.WriteLine(" O ");
-            Console.WriteLine("-|-");
-            Console.WriteLine("/ \\\n");
-            Console.WriteLine("^This is my grandson. He's been your rival since you were a baby.");
-            Console.WriteLine("...Erm, what is his name again?\n");
+        }
 
+        public void CreateRival()
+        {
+            print.DisplayRivalCreationMessage();
             rival = new Rival();
-            rival.name = Console.ReadLine();
-
-            Console.WriteLine("That's right! I remember now! His name is " + rival.name + "!\n");
-
-            Console.WriteLine(player.name + "! Your very own POKEMON legend is about to unfold!");
-            Console.WriteLine("A world of dreams and adventures with POKEMON awaits! Let's go!");
-       }
+            rival.name = ui.GetUserInputName();
+            Console.WriteLine("That's right! I remember now! His name is " + rival.name + "!\n\n\n");
+        }
 
         public void PlayerObtainFirstPokemon()
         {
-            Console.WriteLine("OAK: Ahhh " + player.name + " and " + rival.name + ", welcome to my lab!");
-            Console.WriteLine("\tHappy 10th birthday to you both! Enjoy it because you will be 10 for the rest of your life! You are now old enough to get your first POKEMON!");
-            Console.WriteLine("\tIn front of you are three POKEMON!");
-            Console.WriteLine("\tHaha!");
-            Console.WriteLine("\tThey are inside the POKE BALLs.");
-            Console.WriteLine("\tWhen I was young, I was a serious POKEMON trainer!");
-            Console.WriteLine("In my old age, I have only 3 left, but you can have one! Choose!\n");
-            Console.WriteLine(rival.name + ": Hey! Gramps! What about me?\n");
-            Console.WriteLine("OAK: Be patient! " + rival.name + ", you can have one too!\n");
-
-
-
-            while (ui.userInputPokemonSelection != 1 && ui.userInputPokemonSelection != 2 && ui.userInputPokemonSelection != 3)
-            {
-                Console.WriteLine("BULBASAUR, the Grass/Poison POKEMON!     (1)");
-                Console.WriteLine("CHARMANDER, the Fire POKEMON!            (2)");
-                Console.WriteLine("SQUIRTLE, the Water POKEMON!             (3)");
-
-                Int32.TryParse(Console.ReadLine(), out ui.userInputPokemonSelection);
-                if (ui.userInputPokemonSelection != 1 && ui.userInputPokemonSelection != 2 && ui.userInputPokemonSelection != 3)
-                {
-                    Console.WriteLine("Oops! Invalid entry, please try again.\n");
-                }
-            }
-            string printTypes;
-            if (ui.userInputPokemonSelection == 1)
-            {
-                starter = new Bulbasaur();
-            }
-            else if(ui.userInputPokemonSelection == 2)
-            {
-                starter = new Charmander();
-            }
-            else if (ui.userInputPokemonSelection == 3)
-            {
-                starter = new Squirtle();
-            }
-
-            Console.WriteLine("\n\n\n");
-            printTypes = type.PrintPokemonTypes(typeArray, starter);
-            Console.WriteLine("So! You want the " + printTypes + " Pokemon, " + starter.species + "!");                          //normally a question, allow user to say yes/no
-            Console.WriteLine("This Pokemon is really energetic!");
-            Console.WriteLine(player.name + " received a " + starter.species + "!\n\n\n");
+            print.ObtainFirstPokemonMessage(player, rival);
+            int starterChoiceInt = ui.GetUserInputStarterPokemonSelection();
+            starter = new Pokemon();
+            starter.GeneratePlayerStarterPokemon(starterChoiceInt, player);
+            print.DisplayPlayerStarterSelectionMessage(typeArray, player.partyList[0], player);
             //Console.WriteLine("Do you want to give a nickname to " + starter.species + "?");                                                //user input again yo
-            player.partyList.Add(starter);
-
         }
 
         public void RivalObtainFirstPokemon()
         {
-            if(player.partyList[0].species.Equals("Bulbasaur"))
-            {
-                starter = new Charmander();
-            }
-            else if(player.partyList[0].species.Equals("Charmander"))
-            {
-                starter = new Squirtle();
-            }
-            else
-            {
-                starter = new Bulbasaur();
-            }
-            rival.partyList.Add(starter);
-            Console.WriteLine(rival.name + ": I'll take this one, then!");
-            Console.WriteLine(rival.name + " received a " + starter.species + "!");
+            starter = new Pokemon();
+            starter.GenerateRivalStarterPokemon(player.partyList, starter, rival);
+            //rival.RivalStarterSelectionLogic();
+            print.DisplayRivalStarterSelectionMessage(typeArray, rival.partyList[0], rival);
         }
 
         //initiate first battle? (you should probably always win)
