@@ -16,12 +16,18 @@ namespace PokemonPurple
         //constructor
         public Rainforest()
         {
-
+            zoneName = "Rainforest";
         }
 
 
 
         //functions
+        protected override void GeneratePossiblePokemonList()
+        {
+            possiblePokemonList.Add(pokemon.pinsir);
+            possiblePokemonList.Add(pokemon.ekans);
+            possiblePokemonList.Add(pokemon.noibat);
+        }
 
     }
 }

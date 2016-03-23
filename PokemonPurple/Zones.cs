@@ -10,7 +10,11 @@ namespace PokemonPurple
     {
 
         //member variables
-        List<Pokemon> possiblePokemonInZoneList = new List<Pokemon>();
+        protected SetUp pokemon = new SetUp();
+
+        protected string zoneName;
+
+        protected List<Pokemon> possiblePokemonList = new List<Pokemon>();
 
 
 
@@ -23,6 +27,10 @@ namespace PokemonPurple
 
 
         //functions
+        protected virtual void GeneratePossiblePokemonList()
+        {
+
+        }
 
     }
 }

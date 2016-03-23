@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Alternate_Dimension
+    class Alternate_Dimension : Zones
     {
 
         //member variables
@@ -16,12 +16,18 @@ namespace PokemonPurple
         //constructor
         public Alternate_Dimension()
         {
-
+            zoneName = "Alternate Dimension";
         }
 
 
 
         //functions
+        protected override void GeneratePossiblePokemonList()
+        {
+            possiblePokemonList.Add(pokemon.espurr);
+            possiblePokemonList.Add(pokemon.sableye);
+            possiblePokemonList.Add(pokemon.dratini);
+        }
 
     }
 }

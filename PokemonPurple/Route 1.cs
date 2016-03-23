@@ -16,12 +16,18 @@ namespace PokemonPurple
         //constructor
         public Route_1()
         {
-
+            zoneName = "Route 1";
         }
 
 
 
         //functions
+        protected override void GeneratePossiblePokemonList()
+        {
+            possiblePokemonList.Add(pokemon.meowth);
+            possiblePokemonList.Add(pokemon.hawlucha);
+            possiblePokemonList.Add(pokemon.clefairy);
+        }
 
     }
 }

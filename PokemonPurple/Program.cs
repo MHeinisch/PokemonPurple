@@ -13,9 +13,10 @@ namespace PokemonPurple
 
             SetUp setup = new SetUp();
 
-            Types type = new Types();
+            setup.FillTypeArray();
+            setup.FillTypeEffectivenessTwoDArray();
 
-            /*setup.DisplayIntroMessasges();
+            setup.DisplayIntroMessasges();
 
             setup.SelectNewOrSavedGame();
 
@@ -23,7 +24,7 @@ namespace PokemonPurple
 
             setup.ObtainFirstPokemon();
 
-            Console.ReadLine();*/
+            Console.ReadLine();
 
         }
     }

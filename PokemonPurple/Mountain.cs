@@ -16,12 +16,18 @@ namespace PokemonPurple
         //constructor
         public Mountain()
         {
-
+            zoneName = "Mountain";
         }
 
 
 
         //functions
+        protected override void GeneratePossiblePokemonList()
+        {
+            possiblePokemonList.Add(pokemon.bergmite);
+            possiblePokemonList.Add(pokemon.diglett);
+            possiblePokemonList.Add(pokemon.carbink);
+        }
 
     }
 }

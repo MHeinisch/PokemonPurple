@@ -10,18 +10,18 @@ namespace PokemonPurple
     {
 
         //member variables
-        string name;
+        public string name;
         const int age = 10;
 
-        List<Items> bagList = new List<Items>();
+        //List<Items> bagList = new List<Items>();
         List<Pokemon> partyList = new List<Pokemon>();
 
 
 
         //constructor
-        public Trainer(string Name)
+        public Trainer()
         {
-            name = Name;
+
         }
 
 

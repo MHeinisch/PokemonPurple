@@ -10,10 +10,9 @@ namespace PokemonPurple
     {
 
         //member variables        
+        public SetUp move = new SetUp();
 
-        protected Moves move = new Moves();
-
-        protected string species;
+        public string species;
         string name;
         int level;
         //int attackStat;
@@ -21,11 +20,10 @@ namespace PokemonPurple
         //int speedStat;
         string typeOne;
         string typeTwo;
-        protected int typeOneIndex;
-        protected int typeTwoIndex;
+        public int typeOneIndex;
+        public int typeTwoIndex;
 
         protected List<Moves> moveList = new List<Moves>();
-
 
 
 
@@ -42,6 +40,7 @@ namespace PokemonPurple
         {
 
         }
+
         void LevelUp()
         {
 
@@ -56,7 +55,7 @@ namespace PokemonPurple
         {
 
         }
-
+        
         void IncreaseAttackStat()
         {
 
