@@ -43,6 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Abandoned Factory.cs" />
+    <Compile Include="Alternate Dimension.cs" />
     <Compile Include="Bergmite.cs" />
     <Compile Include="Bulbasaur.cs" />
     <Compile Include="Carbink.cs" />
@@ -57,6 +59,7 @@
     <Compile Include="Klink.cs" />
     <Compile Include="Litwick.cs" />
     <Compile Include="Meowth.cs" />
+    <Compile Include="Mountain.cs" />
     <Compile Include="Moves.cs" />
     <Compile Include="Noibat.cs" />
     <Compile Include="Pikachu.cs" />
@@ -64,11 +67,14 @@
     <Compile Include="Pokemon.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Rainforest.cs" />
+    <Compile Include="Route 1.cs" />
     <Compile Include="Sableye.cs" />
     <Compile Include="SetUp.cs" />
     <Compile Include="Squirtle.cs" />
     <Compile Include="Trainer.cs" />
     <Compile Include="Types.cs" />
+    <Compile Include="Zones.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
