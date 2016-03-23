@@ -14,7 +14,7 @@ namespace PokemonPurple
         const int age = 10;
 
         //List<Items> bagList = new List<Items>();
-        List<Pokemon> partyList = new List<Pokemon>();
+        public List<Pokemon> partyList = new List<Pokemon>();
 
 
 

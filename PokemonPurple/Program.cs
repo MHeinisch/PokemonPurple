@@ -22,7 +22,9 @@ namespace PokemonPurple
 
             setup.CreatePlayerAndRival();
 
-            setup.ObtainFirstPokemon();
+            setup.PlayerObtainFirstPokemon();
+
+            setup.RivalObtainFirstPokemon();
 
             Console.ReadLine();
 

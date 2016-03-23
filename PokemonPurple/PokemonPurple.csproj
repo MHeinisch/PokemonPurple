@@ -76,6 +76,7 @@
     <Compile Include="Squirtle.cs" />
     <Compile Include="Trainer.cs" />
     <Compile Include="Types.cs" />
+    <Compile Include="UI.cs" />
     <Compile Include="Zones.cs" />
   </ItemGroup>
   <ItemGroup>

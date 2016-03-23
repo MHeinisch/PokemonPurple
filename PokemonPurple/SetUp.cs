@@ -14,12 +14,10 @@ namespace PokemonPurple
         Trainer rival;
 
         Types type = new Types();
+        UI ui = new UI();
 
         public string[] typeArray = new string[19];
         public double[,] typeMatchup2DArray = new double[19, 19]; //[row, column] row = attack type, column = target types
-
-        int userInputGameSelection = 0;
-        int userInputPokemonSelection = 0;
 
         public Pokemon bergmite;
         public Pokemon bulbasaur;
@@ -375,11 +373,11 @@ namespace PokemonPurple
         public void SelectNewOrSavedGame()
         {
             Console.WriteLine("Please select a game option:\n");
-            while (userInputGameSelection != 1)
+            while (ui.userInputGameSelection != 1)
             {
                 Console.WriteLine("New Game: (1)");
-                Int32.TryParse(Console.ReadLine(), out userInputGameSelection);
-                if (userInputGameSelection != 1)
+                Int32.TryParse(Console.ReadLine(), out ui.userInputGameSelection);
+                if (ui.userInputGameSelection != 1)
                 {
                     Console.WriteLine("Oops! Invalid entry, please try again.\n");
                 }
@@ -415,7 +413,7 @@ namespace PokemonPurple
             Console.WriteLine("A world of dreams and adventures with POKEMON awaits! Let's go!");
        }
 
-        public void ObtainFirstPokemon()
+        public void PlayerObtainFirstPokemon()
         {
             Console.WriteLine("OAK: Ahhh " + player.name + " and " + rival.name + ", welcome to my lab!");
             Console.WriteLine("\tHappy 10th birthday to you both! Enjoy it because you will be 10 for the rest of your life! You are now old enough to get your first POKEMON!");
@@ -429,43 +427,62 @@ namespace PokemonPurple
 
 
 
-            while (userInputPokemonSelection != 1 && userInputPokemonSelection != 2 && userInputPokemonSelection != 3)
+            while (ui.userInputPokemonSelection != 1 && ui.userInputPokemonSelection != 2 && ui.userInputPokemonSelection != 3)
             {
                 Console.WriteLine("BULBASAUR, the Grass/Poison POKEMON!     (1)");
                 Console.WriteLine("CHARMANDER, the Fire POKEMON!            (2)");
                 Console.WriteLine("SQUIRTLE, the Water POKEMON!             (3)");
 
-                Int32.TryParse(Console.ReadLine(), out userInputPokemonSelection);
-                if (userInputPokemonSelection != 1 && userInputPokemonSelection != 2 && userInputPokemonSelection != 3)
+                Int32.TryParse(Console.ReadLine(), out ui.userInputPokemonSelection);
+                if (ui.userInputPokemonSelection != 1 && ui.userInputPokemonSelection != 2 && ui.userInputPokemonSelection != 3)
                 {
                     Console.WriteLine("Oops! Invalid entry, please try again.\n");
                 }
             }
             string printTypes;
-            if (userInputPokemonSelection == 1)
+            if (ui.userInputPokemonSelection == 1)
             {
                 starter = new Bulbasaur();
-                printTypes = type.PrintPokemonTypes(typeArray, starter);
-                Console.WriteLine("Congratulations, you selected " + starter.species + ", the " + printTypes + " Pokemon!");
             }
-            else if(userInputPokemonSelection == 2)
+            else if(ui.userInputPokemonSelection == 2)
             {
                 starter = new Charmander();
-                printTypes = type.PrintPokemonTypes(typeArray, starter);
-                Console.WriteLine("Congratulations, you selected " + starter.species + ", the " + printTypes + " Pokemon!");
             }
-            else if (userInputPokemonSelection == 3)
+            else if (ui.userInputPokemonSelection == 3)
             {
                 starter = new Squirtle();
-                printTypes = type.PrintPokemonTypes(typeArray, starter);
-                Console.WriteLine("Congratulations, you selected " + starter.species + ", the " + printTypes + " Pokemon!");
             }
-            //blahblahblah oak says pick a pokemon
-            //see description of each pkmn
-            //if else select with pkmn
-            //rival selects pkmn stronger than yours
-            //initiate first battle? (you should probably always win)
+
+            Console.WriteLine("\n\n\n");
+            printTypes = type.PrintPokemonTypes(typeArray, starter);
+            Console.WriteLine("So! You want the " + printTypes + " Pokemon, " + starter.species + "!");                          //normally a question, allow user to say yes/no
+            Console.WriteLine("This Pokemon is really energetic!");
+            Console.WriteLine(player.name + " received a " + starter.species + "!\n\n\n");
+            //Console.WriteLine("Do you want to give a nickname to " + starter.species + "?");                                                //user input again yo
+            player.partyList.Add(starter);
+
         }
+
+        public void RivalObtainFirstPokemon()
+        {
+            if(player.partyList[0].species.Equals("Bulbasaur"))
+            {
+                starter = new Charmander();
+            }
+            else if(player.partyList[0].species.Equals("Charmander"))
+            {
+                starter = new Squirtle();
+            }
+            else
+            {
+                starter = new Bulbasaur();
+            }
+            rival.partyList.Add(starter);
+            Console.WriteLine(rival.name + ": I'll take this one, then!");
+            Console.WriteLine(rival.name + " received a " + starter.species + "!");
+        }
+
+        //initiate first battle? (you should probably always win)
 
     }
 }
