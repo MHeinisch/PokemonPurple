@@ -14,6 +14,7 @@ namespace PokemonPurple
         public int userInputPokemonSelection = 0;
         public int userInputZoneSelection = 0;
         public string userInputBattleSelection = " ";
+        public int userInputAttackSelection = 0;
 
 
 
@@ -91,6 +92,16 @@ namespace PokemonPurple
                 Int32.TryParse(Console.ReadLine(), out userInputPokemonSelection);
             }
             return userInputPokemonSelection;
+        }
+
+        public int GetUserInputAttackSelection(Trainer Player, int ActivePokemonIndex)
+        {
+            userInputAttackSelection = 0;
+            while (userInputAttackSelection < 1 || userInputAttackSelection > Player.partyList[ActivePokemonIndex].moveList.Count())
+            {
+                Int32.TryParse(Console.ReadLine(), out userInputAttackSelection);
+            }
+            return userInputAttackSelection;
         }
 
     }

@@ -13,6 +13,7 @@ namespace PokemonPurple
         public Trainer player;
         public Trainer rival;
         public Pokemon starter;
+        public Pokemon wild;
 
         UI ui = new UI();
         PrintLine print = new PrintLine();
@@ -25,6 +26,7 @@ namespace PokemonPurple
 
         int zoneChoiceInt;
         int activePokemonIndex = 0;
+        int attackSelectionIndex;
 
 
 
@@ -374,11 +376,11 @@ namespace PokemonPurple
             Random randomInt = new Random();
             int possiblePokemonListIndex = randomInt.Next(0, Zone.possiblePokemonList.Count());
             Console.WriteLine("You've encountered a wild " + Zone.possiblePokemonList[possiblePokemonListIndex].species + "!");
-            Pokemon Wild = Zone.possiblePokemonList[possiblePokemonListIndex];
-            Wild.level = player.partyList[0].level - 1;
-            Wild.maxHealthPoints = Wild.level * 5;
-            Wild.currentHealthPoints = Wild.maxHealthPoints;
-            print.DisplayEnemyPokemonStats(Wild);
+            wild = Zone.possiblePokemonList[possiblePokemonListIndex];
+            wild.level = player.partyList[0].level - 1;
+            wild.maxHealthPoints = wild.level * 5;
+            wild.currentHealthPoints = wild.maxHealthPoints;
+            print.DisplayEnemyPokemonStats(wild);
             Console.WriteLine("\nWhich Pokemon would you like to use?");
             if (player.partyList.Count() > 1)
             {
@@ -402,6 +404,8 @@ namespace PokemonPurple
                     string currentMoveInfo = print.DisplayMoveStats(player.partyList[activePokemonIndex].moveList[movesListIndex]);
                     Console.WriteLine("(" + (movesListIndex + 1) + ") " + currentMoveInfo);
                 }
+                attackSelectionIndex = ui.GetUserInputAttackSelection(player, activePokemonIndex) - 1;
+                CalculateDamage(player.partyList[activePokemonIndex], wild, attackSelectionIndex);
                 //attack stuff
             }
             else if (battleChoiceString.ToUpper().Equals("S"))
@@ -428,6 +432,21 @@ namespace PokemonPurple
             {
                 player.partyList.Remove(UserPokemon);
             }
+        }
+
+        public void CalculateDamage(Pokemon UserPokemon, Pokemon EnemyPokemon, int MovesListIndex)
+        {
+            int baseDamage;
+            double typeMultiplier;
+            double totalDamage;
+            Random rnd = new Random();
+            int rndUserLevel = rnd.Next(0, UserPokemon.level + 1);
+            int rndEnemyLevel = rnd.Next(0, EnemyPokemon.level + 1);
+            baseDamage = (player.partyList[activePokemonIndex].moveList[MovesListIndex].power + (rndUserLevel - rndEnemyLevel)) / 5;
+            typeMultiplier = typeMatchup2DArray[UserPokemon.moveList[MovesListIndex].moveTypeIndex, EnemyPokemon.typeOneIndex] * typeMatchup2DArray[UserPokemon.moveList[MovesListIndex].moveTypeIndex, EnemyPokemon.typeTwoIndex];
+            totalDamage = baseDamage * typeMultiplier;
+            Console.WriteLine(UserPokemon.species + " used " + UserPokemon.moveList[MovesListIndex].name + "!");
+            Console.WriteLine(EnemyPokemon.species + " lost " + totalDamage + " HP!");
         }
 
     }
