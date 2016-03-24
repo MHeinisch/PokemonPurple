@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Squirtle";
             typeOneIndex = 3;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new WaterGun());
+            moveList.Add(new Surf());
+            moveList.Add(new HydroPump());
+            moveList.Add(new IceBeam());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.watergun);
-            moveList.Add(move.surf);
-            moveList.Add(move.hydropump);
-            moveList.Add(move.icebeam);
-        }
 
     }
 

@@ -20,19 +20,17 @@ namespace PokemonPurple
             species = "Bergmite";
             typeOneIndex = 6;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new PowderSnow());
+            moveList.Add(new IceBeam());
+            moveList.Add(new Blizzard());
+            moveList.Add(new NightSlash());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.powdersnow);
-            moveList.Add(move.icebeam);
-            moveList.Add(move.blizzard);
-            moveList.Add(move.nightslash);
-        }
+
 
     }
 

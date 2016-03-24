@@ -12,7 +12,7 @@ namespace PokemonPurple
         //member variables
         protected SetUp pokemon = new SetUp();
 
-        protected string zoneName;
+        public string zoneName;
 
         protected List<Pokemon> possiblePokemonList = new List<Pokemon>();
 

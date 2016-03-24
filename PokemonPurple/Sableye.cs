@@ -19,21 +19,18 @@ namespace PokemonPurple
             species = "Sableye";
             typeOneIndex = 16;
             typeTwoIndex = 14;
+            moveList.Add(new Tackle());
+            moveList.Add(new Pursuit());
+            moveList.Add(new ShadowSneak());
+            moveList.Add(new NightSlash());
+            moveList.Add(new ShadowPunch());
+            moveList.Add(new FoulPlay());
+            moveList.Add(new ShadowBall());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.pursuit);
-            moveList.Add(move.shadowsneak);
-            moveList.Add(move.nightslash);
-            moveList.Add(move.shadowpunch);
-            moveList.Add(move.foulplay);
-            moveList.Add(move.shadowball);
-        }
 
     }
 

@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Ekans";
             typeOneIndex = 8;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new Acid());
+            moveList.Add(new PoisonJab());
+            moveList.Add(new GunkShot());
+            moveList.Add(new EarthPower());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.acid);
-            moveList.Add(move.poisonjab);
-            moveList.Add(move.gunkshot);
-            moveList.Add(move.earthpower);
-        }
 
     }
 

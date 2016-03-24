@@ -8,7 +8,6 @@ namespace PokemonPurple
 {
     class Pikachu : Pokemon
     {
-
         //member variables
 
 
@@ -19,19 +18,16 @@ namespace PokemonPurple
             species = "Pikachu";
             typeOneIndex = 4;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new ThunderShock());
+            moveList.Add(new Thunderbolt());
+            moveList.Add(new Thunder());
+            moveList.Add(new Surf());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.thundershock);
-            moveList.Add(move.thunderbolt);
-            moveList.Add(move.thunder);
-            moveList.Add(move.surf);
-        }
 
     }
 

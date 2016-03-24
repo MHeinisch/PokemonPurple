@@ -24,9 +24,9 @@ namespace PokemonPurple
         //functions
         protected override void GeneratePossiblePokemonList()
         {
-            possiblePokemonList.Add(pokemon.espurr);
-            possiblePokemonList.Add(pokemon.sableye);
-            possiblePokemonList.Add(pokemon.dratini);
+            possiblePokemonList.Add(new Espurr());
+            possiblePokemonList.Add(new Sableye());
+            possiblePokemonList.Add(new Dratini());
         }
 
     }

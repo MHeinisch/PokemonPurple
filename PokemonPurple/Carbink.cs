@@ -19,21 +19,18 @@ namespace PokemonPurple
             species = "Carbink";
             typeOneIndex = 13;
             typeTwoIndex = 18;
+            moveList.Add(new Tackle());
+            moveList.Add(new RockThrow());
+            moveList.Add(new FairyWind());
+            moveList.Add(new PowerGem());
+            moveList.Add(new DazzlingGleam());
+            moveList.Add(new StoneEdge());
+            moveList.Add(new Moonblast());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.rockthrow);
-            moveList.Add(move.fairywind);
-            moveList.Add(move.powergem);
-            moveList.Add(move.dazzlinggleam);
-            moveList.Add(move.stoneedge);
-            moveList.Add(move.moonblast);
-        }
 
     }
 

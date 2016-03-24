@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Espurr";
             typeOneIndex = 11;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new Confusion());
+            moveList.Add(new Psychic());
+            moveList.Add(new PsychoBoost());
+            moveList.Add(new DazzlingGleam());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.confusion);
-            moveList.Add(move.psychic);
-            moveList.Add(move.psychoboost);
-            moveList.Add(move.dazzlinggleam);
-        }
 
     }
 

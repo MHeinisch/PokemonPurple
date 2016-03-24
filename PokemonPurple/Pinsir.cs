@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Pinsir : Pikachu
+    class Pinsir : Pokemon
     {
 
         //member variables
@@ -19,20 +19,16 @@ namespace PokemonPurple
             species = "Pinsir";
             typeOneIndex = 12;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new StruggleBug());
+            moveList.Add(new X_Scissor());
+            moveList.Add(new Megahorn());
+            moveList.Add(new AuraSphere());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.strugglebug);
-            moveList.Add(move.xscissor);
-            moveList.Add(move.megahorn);
-            moveList.Add(move.aurasphere);
-        }
-
     }
 
 }

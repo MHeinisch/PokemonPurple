@@ -24,9 +24,9 @@ namespace PokemonPurple
         //functions
         protected override void GeneratePossiblePokemonList()
         {
-            possiblePokemonList.Add(pokemon.pinsir);
-            possiblePokemonList.Add(pokemon.ekans);
-            possiblePokemonList.Add(pokemon.noibat);
+            possiblePokemonList.Add(new Pinsir());
+            possiblePokemonList.Add(new Ekans());
+            possiblePokemonList.Add(new Noibat());
         }
 
     }

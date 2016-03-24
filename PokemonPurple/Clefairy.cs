@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Clefairy";
             typeOneIndex = 18;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new FairyWind());
+            moveList.Add(new DazzlingGleam());
+            moveList.Add(new Moonblast());
+            moveList.Add(new Psychic());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.fairywind);
-            moveList.Add(move.dazzlinggleam);
-            moveList.Add(move.moonblast);
-            moveList.Add(move.psychic);
-        }
 
     }
 

@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Charmander";
             typeOneIndex = 2;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new Ember());
+            moveList.Add(new Flamethrower());     //can burn
+            moveList.Add(new FireBlast());
+            moveList.Add(new DragonPulse());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.ember);
-            moveList.Add(move.flamethrower);
-            moveList.Add(move.fireblast);
-            moveList.Add(move.dragonpulse);
-        }
 
     }
 

@@ -12,6 +12,7 @@ namespace PokemonPurple
         //member variables
         public int userInputGameSelection = 0;
         public int userInputPokemonSelection = 0;
+        public int userInputZoneSelection = 0;
 
 
 
@@ -58,6 +59,19 @@ namespace PokemonPurple
                 }
             }
             return userInputPokemonSelection;
+        }
+
+        public int GetUserInputZoneSelection(List<Zones> ZoneList)
+        {
+            while (userInputZoneSelection < 1 || userInputZoneSelection > ZoneList.Count())
+            {
+                for (int zoneListIndex = 0; zoneListIndex < ZoneList.Count(); zoneListIndex++)
+                {
+                    Console.WriteLine("(" + (zoneListIndex + 1) + "):    " + ZoneList[zoneListIndex].zoneName);
+                }
+                Int32.TryParse(Console.ReadLine(), out userInputZoneSelection);
+            }
+            return userInputZoneSelection;
         }
 
     }

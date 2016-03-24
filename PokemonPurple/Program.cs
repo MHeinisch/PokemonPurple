@@ -12,12 +12,12 @@ namespace PokemonPurple
         {
 
             SetUp setup = new SetUp();
+            Game game = new Game();
 
             setup.SetUpGame();
 
-            setup.PlayerObtainFirstPokemon();
-
-            setup.RivalObtainFirstPokemon();
+            game.FillZoneList();
+            game.SelectZone();
 
             Console.ReadLine();
 

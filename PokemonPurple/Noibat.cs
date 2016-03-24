@@ -19,21 +19,18 @@ namespace PokemonPurple
             species = "Noibat";
             typeOneIndex = 10;
             typeTwoIndex = 15;
+            moveList.Add(new Tackle());
+            moveList.Add(new Gust());
+            moveList.Add(new Twister());
+            moveList.Add(new DrillPeck());
+            moveList.Add(new DragonPulse());
+            moveList.Add(new Hurricane());
+            moveList.Add(new DracoMeteor());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.gust);
-            moveList.Add(move.twister);
-            moveList.Add(move.drillpeck);
-            moveList.Add(move.dragonpulse);
-            moveList.Add(move.hurricane);
-            moveList.Add(move.dracometeor);
-        }
 
     }
 

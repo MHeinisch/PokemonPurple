@@ -10,24 +10,16 @@ namespace PokemonPurple
     {
 
         //member variables
-        string name;
-        int power;
-        int accuracy;
-        int powerPoints;
-        int moveTypeIndex;
+        protected string name;
+        protected int power;
+        protected int accuracy;
+        protected int powerPoints;
+        protected int moveTypeIndex;
+
 
 
 
         //constructor
-        public Moves(string Name, int Power, int Accuracy, int PowerPoints, int MoveTypeIndex)
-        {
-            name = Name;
-            power = Power;
-            accuracy = Accuracy;
-            powerPoints = PowerPoints;
-            moveTypeIndex = MoveTypeIndex;
-        }
-
         public Moves()
         {
 

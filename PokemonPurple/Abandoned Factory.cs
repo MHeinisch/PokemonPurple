@@ -24,9 +24,9 @@ namespace PokemonPurple
         //functions
         protected override void GeneratePossiblePokemonList()
         {
-            possiblePokemonList.Add(pokemon.pikachu);
-            possiblePokemonList.Add(pokemon.litwick);
-            possiblePokemonList.Add(pokemon.klink);
+            possiblePokemonList.Add(new Pikachu());
+            possiblePokemonList.Add(new Litwick());
+            possiblePokemonList.Add(new Klink());
         }
 
     }

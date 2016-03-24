@@ -19,21 +19,18 @@ namespace PokemonPurple
             species = "Hawlucha";
             typeOneIndex = 7;
             typeTwoIndex = 10;
+            moveList.Add(new Tackle());
+            moveList.Add(new KarateChop());
+            moveList.Add(new Gust());
+            moveList.Add(new AuraSphere());
+            moveList.Add(new DrillPeck());
+            moveList.Add(new FocusBlast());
+            moveList.Add(new Hurricane());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.karatechop);
-            moveList.Add(move.gust);
-            moveList.Add(move.aurasphere);
-            moveList.Add(move.drillpeck);
-            moveList.Add(move.focusblast);
-            moveList.Add(move.hurricane);
-        }
 
     }
 

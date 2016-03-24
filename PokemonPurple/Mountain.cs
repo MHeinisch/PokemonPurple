@@ -24,9 +24,9 @@ namespace PokemonPurple
         //functions
         protected override void GeneratePossiblePokemonList()
         {
-            possiblePokemonList.Add(pokemon.bergmite);
-            possiblePokemonList.Add(pokemon.diglett);
-            possiblePokemonList.Add(pokemon.carbink);
+            possiblePokemonList.Add(new Bergmite());
+            possiblePokemonList.Add(new Diglett());
+            possiblePokemonList.Add(new Carbink());
         }
 
     }

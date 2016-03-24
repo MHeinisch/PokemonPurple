@@ -19,21 +19,18 @@ namespace PokemonPurple
             species = "Bulbasaur";
             typeOneIndex = 5;
             typeTwoIndex = 8;
+            moveList.Add(new Tackle());
+            moveList.Add(new VineWhip());
+            moveList.Add(new Acid());
+            moveList.Add(new LeafBlade());
+            moveList.Add(new PoisonJab());
+            moveList.Add(new SeedFlare());
+            moveList.Add(new GunkShot());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.vinewhip);
-            moveList.Add(move.acid);
-            moveList.Add(move.leafblade);
-            moveList.Add(move.poisonjab);
-            moveList.Add(move.seedflare);
-            moveList.Add(move.gunkshot);
-        }
 
     }
 

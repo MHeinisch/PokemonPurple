@@ -36,10 +36,7 @@ namespace PokemonPurple
 
 
         //functions
-        protected virtual void GenerateMoveList()
-        {
 
-        }
 
         public void GeneratePlayerStarterPokemon(int UserInput, Trainer Player)
         {

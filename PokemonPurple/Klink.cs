@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Klink";
             typeOneIndex = 17;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new BulletPunch());
+            moveList.Add(new FlashCannon());
+            moveList.Add(new IronTail());
+            moveList.Add(new Thunderbolt());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.bulletpunch);
-            moveList.Add(move.flashcannon);
-            moveList.Add(move.irontail);
-            moveList.Add(move.thunderbolt);
-        }
 
     }
 

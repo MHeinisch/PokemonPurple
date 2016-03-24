@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Diglett";
             typeOneIndex = 9;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new MudShot());
+            moveList.Add(new EarthPower());
+            moveList.Add(new Earthquake());
+            moveList.Add(new PowerGem());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.mudshot);
-            moveList.Add(move.earthpower);
-            moveList.Add(move.earthquake);
-            moveList.Add(move.powergem);
-        }
 
     }
 

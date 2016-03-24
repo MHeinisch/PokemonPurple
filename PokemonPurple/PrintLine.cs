@@ -56,7 +56,7 @@ namespace PokemonPurple
         public void EnterGameMessage(Trainer Player)
         {
             Console.WriteLine(Player.name + "! Your very own POKEMON legend is about to unfold!");
-            Console.WriteLine("A world of dreams and adventures with POKEMON awaits! Let's go!");
+            Console.WriteLine("A world of dreams and adventures with POKEMON awaits! Let's go!\n\n\n");
         }
 
         public void ObtainFirstPokemonMessage(Trainer Player, Trainer Rival)
@@ -88,19 +88,25 @@ namespace PokemonPurple
 
         public void DisplayPlayerStarterSelectionMessage(string[] TypeArray, Pokemon Starter, Trainer Player)
         {
-            Console.WriteLine("\n\n\n");
-            Console.WriteLine("So! You want the " + DisplayPokemonTypes(TypeArray, Starter) + " Pokemon, " + Starter.species + "!");                          //normally a question, allow user to say yes/no
+            Console.WriteLine("\nSo! You want the " + DisplayPokemonTypes(TypeArray, Starter) + " Pokemon, " + Starter.species + "!");                          //normally a question, allow user to say yes/no
             Console.WriteLine("This Pokemon is really energetic!");
             Console.WriteLine(Player.name + " received a " + Starter.species + "!\n\n\n");
         }
 
         public void DisplayRivalStarterSelectionMessage(string[] TypeArray, Pokemon Starter, Trainer Rival)
         {
-            Console.WriteLine("\n\n\n");
-            Console.WriteLine("I'll take this one then!");
+            Console.WriteLine(Rival.name + ": I'll take this one then!");
             Console.WriteLine(Rival.name + " received a " + Starter.species + "!\n\n\n");
         }
 
+        public void DisplayInstructionsPostStarterSelection(Trainer Rival)
+        {
+            Console.WriteLine("From here, you may enter a zone to capture a new Pokemon or train your current Pokemon.");
+            Console.WriteLine("Visit the Pokemon Center to heal your party or access the PC.");
+            Console.WriteLine("When you feel ready, you may enter the Indigo Plateau to challenge " + Rival.name + ", the current league champion!");
+            Console.WriteLine("Remember, if a Pokemon of yours faints in battle, it is lost forever!");
+            Console.WriteLine("Good luck out there!\n\n\n\n\n");
+        }
 
     }
 }

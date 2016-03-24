@@ -19,21 +19,18 @@ namespace PokemonPurple
             species = "Litwick";
             typeOneIndex = 14;
             typeTwoIndex = 2;
+            moveList.Add(new Tackle());
+            moveList.Add(new ShadowSneak());
+            moveList.Add(new Ember());
+            moveList.Add(new ShadowPunch());
+            moveList.Add(new Flamethrower());
+            moveList.Add(new ShadowBall());
+            moveList.Add(new FireBlast());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.shadowsneak);
-            moveList.Add(move.ember);
-            moveList.Add(move.shadowpunch);
-            moveList.Add(move.flamethrower);
-            moveList.Add(move.shadowball);
-            moveList.Add(move.fireblast);
-        }
 
     }
 

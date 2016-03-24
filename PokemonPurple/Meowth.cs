@@ -19,19 +19,16 @@ namespace PokemonPurple
             species = "Meowth";
             typeOneIndex = 1;
             typeTwoIndex = 0;
+            moveList.Add(new Tackle());
+            moveList.Add(new BodySlam());
+            moveList.Add(new MegaKick());
+            moveList.Add(new NightSlash());
+            moveList.Add(new DazzlingGleam());
         }
 
 
 
         //functions
-        protected override void GenerateMoveList()
-        {
-            moveList.Add(move.tackle);
-            moveList.Add(move.bodyslam);
-            moveList.Add(move.megakick);
-            moveList.Add(move.nightslash);
-            moveList.Add(move.dazzlinggleam);
-        }
 
     }
 

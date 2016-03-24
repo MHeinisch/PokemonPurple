@@ -24,9 +24,9 @@ namespace PokemonPurple
         //functions
         protected override void GeneratePossiblePokemonList()
         {
-            possiblePokemonList.Add(pokemon.meowth);
-            possiblePokemonList.Add(pokemon.hawlucha);
-            possiblePokemonList.Add(pokemon.clefairy);
+            possiblePokemonList.Add(new Meowth());
+            possiblePokemonList.Add(new Hawlucha());
+            possiblePokemonList.Add(new Clefairy());
         }
 
     }
