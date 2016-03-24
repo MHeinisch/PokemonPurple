@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Indigo_Plateau : Zones
+    class IndigoPlateau : Zones
     {
 
         //member variables
@@ -14,7 +14,7 @@ namespace PokemonPurple
 
 
         //constructor
-        public Indigo_Plateau()
+        public IndigoPlateau()
         {
             zoneName = "Indigo Plateau";
         }

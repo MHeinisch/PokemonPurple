@@ -17,17 +17,14 @@ namespace PokemonPurple
         public Rainforest()
         {
             zoneName = "Rainforest";
+            possiblePokemonList.Add(new Pinsir());
+            possiblePokemonList.Add(new Ekans());
+            possiblePokemonList.Add(new Noibat());
         }
 
 
 
         //functions
-        protected override void GeneratePossiblePokemonList()
-        {
-            possiblePokemonList.Add(new Pinsir());
-            possiblePokemonList.Add(new Ekans());
-            possiblePokemonList.Add(new Noibat());
-        }
 
     }
 }

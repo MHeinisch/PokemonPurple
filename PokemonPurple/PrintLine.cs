@@ -10,7 +10,7 @@ namespace PokemonPurple
     {
 
         //member variables
-        //SetUp setup = new SetUp();
+        public string[] typeArray = new string[19];
 
 
 
@@ -106,6 +106,42 @@ namespace PokemonPurple
             Console.WriteLine("When you feel ready, you may enter the Indigo Plateau to challenge " + Rival.name + ", the current league champion!");
             Console.WriteLine("Remember, if a Pokemon of yours faints in battle, it is lost forever!");
             Console.WriteLine("Good luck out there!\n\n\n\n\n");
+        }
+
+        public void DisplayCurrentBattleStats(Pokemon UserPokemon, Pokemon EnemyPokemon)
+        {
+            DisplayUserPokemonStats(UserPokemon);
+            DisplayUserPokemonStats(EnemyPokemon);
+        }
+
+        public void DisplayUserPokemonStats(Pokemon UserPokemon)
+        {
+            Console.WriteLine(UserPokemon.species + ":\t\tLevel: " + UserPokemon.level + "\t\tType: " + DisplayPokemonTypes(typeArray, UserPokemon) + "\t\tHP: " + UserPokemon.currentHealthPoints + "/" + UserPokemon.maxHealthPoints);
+
+        }
+
+        public void DisplayEnemyPokemonStats(Pokemon EnemyPokemon)
+        {
+            Console.WriteLine(EnemyPokemon.species + ":\t\tLevel: " + EnemyPokemon.level + "\t\tType: " + DisplayPokemonTypes(typeArray, EnemyPokemon) + "\t\tHP: " + EnemyPokemon.currentHealthPoints + "/" + EnemyPokemon.maxHealthPoints);
+        }
+
+        public void DisplayBattleOptions(Trainer Player, Zones Zone)
+        {
+            Console.WriteLine("(A)  Attack");
+            if (Player.partyList.Count() > 1)
+            {
+                Console.WriteLine("(S)  Switch Active Pokemon");
+            }
+            if (Zone.canCapturePokemon == true && Player.partyList.Count() < 6)
+            {
+                Console.WriteLine("(T)  Throw Pokeball");
+            }
+                Console.WriteLine("(R)  Run");
+        }
+
+        public string DisplayMoveStats(Moves Move)
+        {
+            return Move.name + ":\tPower= " + Move.power + "\tAccuracy= " + Move.accuracy + "\tType= " + typeArray[Move.moveTypeIndex];
         }
 
     }

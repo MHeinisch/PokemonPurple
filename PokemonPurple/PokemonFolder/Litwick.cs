@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Sableye : Pokemon
+    class Litwick : Pokemon
     {
 
         //member variables
@@ -14,18 +14,18 @@ namespace PokemonPurple
 
 
         //constructor
-        public Sableye()
+        public Litwick()
         {
-            species = "Sableye";
-            typeOneIndex = 16;
-            typeTwoIndex = 14;
+            species = "Litwick";
+            typeOneIndex = 14;
+            typeTwoIndex = 2;
             moveList.Add(new Tackle());
-            moveList.Add(new Pursuit());
             moveList.Add(new ShadowSneak());
-            moveList.Add(new NightSlash());
-            moveList.Add(new ShadowPunch());
-            moveList.Add(new FoulPlay());
+            moveList.Add(new Ember());
+            /*moveList.Add(new ShadowPunch());
+            moveList.Add(new Flamethrower());
             moveList.Add(new ShadowBall());
+            moveList.Add(new FireBlast());*/
         }
 
 

@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Charmander :  Pokemon
+    class Ekans : Pokemon
     {
 
         //member variables
@@ -14,16 +14,16 @@ namespace PokemonPurple
 
 
         //constructor
-        public Charmander()
+        public Ekans()
         {
-            species = "Charmander";
-            typeOneIndex = 2;
+            species = "Ekans";
+            typeOneIndex = 8;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new Ember());
-            moveList.Add(new Flamethrower());     //can burn
-            moveList.Add(new FireBlast());
-            moveList.Add(new DragonPulse());
+            moveList.Add(new Acid());
+            /*moveList.Add(new PoisonJab());
+            moveList.Add(new GunkShot());
+            moveList.Add(new EarthPower());*/
         }
 
 

@@ -10,11 +10,13 @@ namespace PokemonPurple
     {
 
         //member variables
-        protected string name;
-        protected int power;
-        protected int accuracy;
-        protected int powerPoints;
-        protected int moveTypeIndex;
+        public string name;
+        public int power;
+        public int accuracy;
+        public int powerPoints;
+        public int maxPowerPoints;
+        public int currentPowerPoints;
+        public int moveTypeIndex;
 
 
 

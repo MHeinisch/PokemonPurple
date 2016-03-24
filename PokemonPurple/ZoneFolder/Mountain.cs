@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Poke_Center : Zones
+    class Mountain : Zones
     {
 
         //member variables
@@ -14,9 +14,12 @@ namespace PokemonPurple
 
 
         //constructor
-        public Poke_Center()
+        public Mountain()
         {
-            zoneName = "Poke Center";
+            zoneName = "Mountain";
+            possiblePokemonList.Add(new Bergmite());
+            possiblePokemonList.Add(new Diglett());
+            possiblePokemonList.Add(new Carbink());
         }
 
 

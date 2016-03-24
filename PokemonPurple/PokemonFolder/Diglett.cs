@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Ekans : Pokemon
+    class Diglett : Pokemon
     {
 
         //member variables
@@ -14,16 +14,16 @@ namespace PokemonPurple
 
 
         //constructor
-        public Ekans()
+        public Diglett()
         {
-            species = "Ekans";
-            typeOneIndex = 8;
+            species = "Diglett";
+            typeOneIndex = 9;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new Acid());
-            moveList.Add(new PoisonJab());
-            moveList.Add(new GunkShot());
-            moveList.Add(new EarthPower());
+            moveList.Add(new MudShot());
+            /*moveList.Add(new EarthPower());
+            moveList.Add(new Earthquake());
+            moveList.Add(new PowerGem());*/
         }
 
 

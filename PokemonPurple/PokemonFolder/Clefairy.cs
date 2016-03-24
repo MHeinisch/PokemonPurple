@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Pinsir : Pokemon
+    class Clefairy : Pokemon
     {
 
         //member variables
@@ -14,21 +14,22 @@ namespace PokemonPurple
 
 
         //constructor
-        public Pinsir()
+        public Clefairy()
         {
-            species = "Pinsir";
-            typeOneIndex = 12;
+            species = "Clefairy";
+            typeOneIndex = 18;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new StruggleBug());
-            moveList.Add(new X_Scissor());
-            moveList.Add(new Megahorn());
-            moveList.Add(new AuraSphere());
+            moveList.Add(new FairyWind());
+            /*moveList.Add(new DazzlingGleam());
+            moveList.Add(new Moonblast());
+            moveList.Add(new Psychic());*/
         }
 
 
 
         //functions
+
     }
 
 }

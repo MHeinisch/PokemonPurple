@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Espurr : Pokemon
+    class Klink : Pokemon
     {
 
         //member variables
@@ -14,16 +14,16 @@ namespace PokemonPurple
 
 
         //constructor
-        public Espurr()
+        public Klink()
         {
-            species = "Espurr";
-            typeOneIndex = 11;
+            species = "Klink";
+            typeOneIndex = 17;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new Confusion());
-            moveList.Add(new Psychic());
-            moveList.Add(new PsychoBoost());
-            moveList.Add(new DazzlingGleam());
+            moveList.Add(new BulletPunch());
+            /*moveList.Add(new FlashCannon());
+            moveList.Add(new IronTail());
+            moveList.Add(new Thunderbolt());*/
         }
 
 

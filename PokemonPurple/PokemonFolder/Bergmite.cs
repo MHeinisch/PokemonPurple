@@ -6,29 +6,31 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Clefairy : Pokemon
+    class Bergmite : Pokemon
     {
 
         //member variables
+        
 
 
 
         //constructor
-        public Clefairy()
+        public Bergmite()
         {
-            species = "Clefairy";
-            typeOneIndex = 18;
+            species = "Bergmite";
+            typeOneIndex = 6;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new FairyWind());
-            moveList.Add(new DazzlingGleam());
-            moveList.Add(new Moonblast());
-            moveList.Add(new Psychic());
+            moveList.Add(new PowderSnow());
+            /*moveList.Add(new IceBeam());
+            moveList.Add(new Blizzard());
+            moveList.Add(new NightSlash());*/
         }
 
 
 
         //functions
+
 
     }
 

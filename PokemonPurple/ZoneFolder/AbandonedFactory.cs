@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Abandoned_Factory : Zones
+    class AbandonedFactory : Zones
     {
 
         //member variables
@@ -14,20 +14,17 @@ namespace PokemonPurple
 
 
         //constructor
-        public Abandoned_Factory()
+        public AbandonedFactory()
         {
             zoneName = "Abandoned Factory";
+            possiblePokemonList.Add(new Pikachu());
+            possiblePokemonList.Add(new Litwick());
+            possiblePokemonList.Add(new Klink());
         }
 
 
 
         //functions
-        protected override void GeneratePossiblePokemonList()
-        {
-            possiblePokemonList.Add(new Pikachu());
-            possiblePokemonList.Add(new Litwick());
-            possiblePokemonList.Add(new Klink());
-        }
 
     }
 }

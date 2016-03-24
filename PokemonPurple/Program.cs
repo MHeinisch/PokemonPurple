@@ -11,13 +11,13 @@ namespace PokemonPurple
         static void Main(string[] args)
         {
 
-            SetUp setup = new SetUp();
             Game game = new Game();
 
-            setup.SetUpGame();
+            game.SetUpGame();
 
-            game.FillZoneList();
-            game.SelectZone();
+            game.PlayGame();
+
+            game.Battle();
 
             Console.ReadLine();
 

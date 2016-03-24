@@ -22,10 +22,10 @@ namespace PokemonPurple
             moveList.Add(new Tackle());
             moveList.Add(new RockThrow());
             moveList.Add(new FairyWind());
-            moveList.Add(new PowerGem());
+            /*moveList.Add(new PowerGem());
             moveList.Add(new DazzlingGleam());
             moveList.Add(new StoneEdge());
-            moveList.Add(new Moonblast());
+            moveList.Add(new Moonblast());*/
         }
 
 

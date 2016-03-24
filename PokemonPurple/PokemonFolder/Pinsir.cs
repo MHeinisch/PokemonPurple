@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Diglett : Pokemon
+    class Pinsir : Pokemon
     {
 
         //member variables
@@ -14,22 +14,21 @@ namespace PokemonPurple
 
 
         //constructor
-        public Diglett()
+        public Pinsir()
         {
-            species = "Diglett";
-            typeOneIndex = 9;
+            species = "Pinsir";
+            typeOneIndex = 12;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new MudShot());
-            moveList.Add(new EarthPower());
-            moveList.Add(new Earthquake());
-            moveList.Add(new PowerGem());
+            moveList.Add(new StruggleBug());
+            /*moveList.Add(new X_Scissor());
+            moveList.Add(new Megahorn());
+            moveList.Add(new AuraSphere());*/
         }
 
 
 
         //functions
-
     }
 
 }

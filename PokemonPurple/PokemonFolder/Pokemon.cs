@@ -10,20 +10,20 @@ namespace PokemonPurple
     {
 
         //member variables        
-        public SetUp move = new SetUp();
-
         public string species;
-        string name;
-        int level;
+        //string nickname;
+        public int level;
         //int attackStat;
         //int defenseStat;
         //int speedStat;
-        string typeOne;
-        string typeTwo;
         public int typeOneIndex;
         public int typeTwoIndex;
+        public int maxHealthPoints;
+        public int currentHealthPoints;
 
-        protected List<Moves> moveList = new List<Moves>();
+        bool isActive;
+
+        public List<Moves> moveList = new List<Moves>();
 
 
 
@@ -58,6 +58,7 @@ namespace PokemonPurple
                     Starter = new Squirtle();
                     UserInput = 0;
                 }
+                Starter.level = 5;
                 Player.partyList.Add(Starter);
             }
             //return Starter;
@@ -80,9 +81,9 @@ namespace PokemonPurple
             Rival.partyList.Add(Starter);
         }
 
-        void LevelUp()
+        public void LevelUp()
         {
-
+            level += 1;
         }
 
         void GainExperiencePoints()

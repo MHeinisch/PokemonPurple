@@ -22,10 +22,10 @@ namespace PokemonPurple
             moveList.Add(new Tackle());
             moveList.Add(new Gust());
             moveList.Add(new Twister());
-            moveList.Add(new DrillPeck());
+            /*moveList.Add(new DrillPeck());
             moveList.Add(new DragonPulse());
             moveList.Add(new Hurricane());
-            moveList.Add(new DracoMeteor());
+            moveList.Add(new DracoMeteor());*/
         }
 
 

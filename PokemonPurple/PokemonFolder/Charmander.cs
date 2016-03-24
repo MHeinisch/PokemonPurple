@@ -6,23 +6,24 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Pikachu : Pokemon
+    class Charmander :  Pokemon
     {
+
         //member variables
 
 
 
         //constructor
-        public Pikachu()
+        public Charmander()
         {
-            species = "Pikachu";
-            typeOneIndex = 4;
+            species = "Charmander";
+            typeOneIndex = 2;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new ThunderShock());
-            moveList.Add(new Thunderbolt());
-            moveList.Add(new Thunder());
-            moveList.Add(new Surf());
+            moveList.Add(new Ember());
+            /*moveList.Add(new Flamethrower());     //can burn
+            moveList.Add(new FireBlast());
+            moveList.Add(new DragonPulse());*/
         }
 
 

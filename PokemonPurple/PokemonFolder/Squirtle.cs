@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Meowth : Pokemon
+    class Squirtle : Pokemon
     {
 
         //member variables
@@ -14,16 +14,16 @@ namespace PokemonPurple
 
 
         //constructor
-        public Meowth()
+        public Squirtle()
         {
-            species = "Meowth";
-            typeOneIndex = 1;
+            species = "Squirtle";
+            typeOneIndex = 3;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new BodySlam());
-            moveList.Add(new MegaKick());
-            moveList.Add(new NightSlash());
-            moveList.Add(new DazzlingGleam());
+            moveList.Add(new WaterGun());
+            /*moveList.Add(new Surf());
+            moveList.Add(new HydroPump());
+            moveList.Add(new IceBeam());*/
         }
 
 

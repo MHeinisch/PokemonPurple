@@ -6,31 +6,28 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Bergmite : Pokemon
+    class Pikachu : Pokemon
     {
-
         //member variables
-        
 
 
 
         //constructor
-        public Bergmite()
+        public Pikachu()
         {
-            species = "Bergmite";
-            typeOneIndex = 6;
+            species = "Pikachu";
+            typeOneIndex = 4;
             typeTwoIndex = 0;
             moveList.Add(new Tackle());
-            moveList.Add(new PowderSnow());
-            moveList.Add(new IceBeam());
-            moveList.Add(new Blizzard());
-            moveList.Add(new NightSlash());
+            moveList.Add(new ThunderShock());
+            /*moveList.Add(new Thunderbolt());
+            moveList.Add(new Thunder());
+            moveList.Add(new Surf());*/
         }
 
 
 
         //functions
-
 
     }
 

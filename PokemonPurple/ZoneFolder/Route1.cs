@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace PokemonPurple
 {
-    class Route_1 : Zones
+    class Route1 : Zones
     {
 
         //member variables
@@ -14,20 +14,17 @@ namespace PokemonPurple
 
 
         //constructor
-        public Route_1()
+        public Route1()
         {
             zoneName = "Route 1";
+            possiblePokemonList.Add(new Meowth());
+            possiblePokemonList.Add(new Hawlucha());
+            possiblePokemonList.Add(new Clefairy());
         }
 
 
 
         //functions
-        protected override void GeneratePossiblePokemonList()
-        {
-            possiblePokemonList.Add(new Meowth());
-            possiblePokemonList.Add(new Hawlucha());
-            possiblePokemonList.Add(new Clefairy());
-        }
 
     }
 }
