@@ -112,6 +112,7 @@ namespace PokemonPurple
         {
             DisplayUserPokemonStats(UserPokemon);
             DisplayUserPokemonStats(EnemyPokemon);
+            Console.WriteLine("\n");
         }
 
         public void DisplayUserPokemonStats(Pokemon UserPokemon)

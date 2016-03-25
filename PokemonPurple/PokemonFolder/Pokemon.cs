@@ -59,6 +59,8 @@ namespace PokemonPurple
                     UserInput = 0;
                 }
                 Starter.level = 5;
+                Starter.maxHealthPoints = Starter.level * 5;
+                Starter.currentHealthPoints = Starter.maxHealthPoints;
                 Player.partyList.Add(Starter);
             }
             //return Starter;
@@ -78,12 +80,17 @@ namespace PokemonPurple
             {
                 Starter = new Bulbasaur();
             }
+            Starter.level = 5;
+            Starter.maxHealthPoints = Starter.level * 5;
+            Starter.currentHealthPoints = Starter.maxHealthPoints;
             Rival.partyList.Add(Starter);
         }
 
-        public void LevelUp()
+        public void LevelUp(Pokemon UserPokemon)
         {
             level += 1;
+            Console.WriteLine(UserPokemon.species + " leveled up!");
+            Console.WriteLine(UserPokemon.species + " is level " + UserPokemon.level + "!");
         }
 
         void GainExperiencePoints()

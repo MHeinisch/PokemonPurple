@@ -17,8 +17,6 @@ namespace PokemonPurple
 
             game.PlayGame();
 
-            game.Battle();
-
             Console.ReadLine();
 
         }

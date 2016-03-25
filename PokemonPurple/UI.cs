@@ -65,6 +65,7 @@ namespace PokemonPurple
 
         public int GetUserInputZoneSelection(List<Zones> ZoneList)
         {
+            userInputZoneSelection = 0;
             while (userInputZoneSelection < 1 || userInputZoneSelection > ZoneList.Count())
             {
                 for (int zoneListIndex = 0; zoneListIndex < ZoneList.Count(); zoneListIndex++)
@@ -78,6 +79,7 @@ namespace PokemonPurple
 
         public string GetUserInputBattleSelection()
         {
+            userInputBattleSelection = " ";
             while (!userInputBattleSelection.ToUpper().Equals("A") && !userInputBattleSelection.ToUpper().Equals("S") && !userInputBattleSelection.ToUpper().Equals("T") && !userInputBattleSelection.ToUpper().Equals("R"))
             {
                 userInputBattleSelection = Console.ReadLine();
@@ -87,7 +89,7 @@ namespace PokemonPurple
         public int GetUserInputActivePokemonSelection(Trainer Player)
         {
             userInputPokemonSelection = 0;
-            while (userInputPokemonSelection < 1 && userInputPokemonSelection > Player.partyList.Count())
+            while (userInputPokemonSelection < 1 || userInputPokemonSelection > Player.partyList.Count())
             {
                 Int32.TryParse(Console.ReadLine(), out userInputPokemonSelection);
             }
