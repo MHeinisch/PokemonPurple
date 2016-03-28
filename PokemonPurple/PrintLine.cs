@@ -126,23 +126,61 @@ namespace PokemonPurple
             Console.WriteLine(EnemyPokemon.species + ":\t\tLevel: " + EnemyPokemon.level + "\t\tType: " + DisplayPokemonTypes(typeArray, EnemyPokemon) + "\t\tHP: " + EnemyPokemon.currentHealthPoints + "/" + EnemyPokemon.maxHealthPoints);
         }
 
-        public void DisplayBattleOptions(Trainer Player, Zones Zone)
+        public void DisplayBattleOptions(Trainer Player, Zones Zone, bool InRivalBattle)
         {
             Console.WriteLine("(A)  Attack");
             if (Player.partyList.Count() > 1)
             {
                 Console.WriteLine("(S)  Switch Active Pokemon");
             }
-            if (Zone.canCapturePokemon == true && Player.partyList.Count() < 6)
+            if (Zone.canCapturePokemon == true && Player.partyList.Count() < 6 && InRivalBattle == false)
             {
                 Console.WriteLine("(T)  Throw Pokeball");
             }
+            if (InRivalBattle == false)
+            {
                 Console.WriteLine("(R)  Run");
+            }
         }
 
         public string DisplayMoveStats(Moves Move)
         {
             return Move.name + ":\tPower= " + Move.power + "\tAccuracy= " + Move.accuracy + "\tType= " + typeArray[Move.moveTypeIndex];
+        }
+
+        public void DisplayRivalBattleMessage(Trainer Player, Trainer Rival, int RivalActivePokemonIndex)
+        {
+            Console.WriteLine("You are about to challenge the league champion to a match!");
+            Console.WriteLine("You may recognize him, his name is " + Rival.name + "!");
+            Console.WriteLine(Rival.name + ": Figures I'd meet you here " + Player.name + "!");
+            Console.WriteLine("Let's battle!!!");
+            Console.WriteLine("\nDA NA NA NA\tDA NA NA NA\tDA NA NA NA\tDA NA NA NA");
+            Console.WriteLine("\n" + Rival.name + ": " + Rival.partyList[RivalActivePokemonIndex].species + ", I choose you!!");
+        }
+
+        public void DisplayMovesList(Trainer Player, int ActivePokemonIndex)
+        {
+            for (int movesListIndex = 0; movesListIndex < Player.partyList[ActivePokemonIndex].moveList.Count(); movesListIndex++)
+            {
+                string currentMoveInfo = DisplayMoveStats(Player.partyList[ActivePokemonIndex].moveList[movesListIndex]);
+                Console.WriteLine("(" + (movesListIndex + 1) + ") " + currentMoveInfo);
+            }
+        }
+
+        public void DisplayTypeMultiplierResult(double TypeMultiplier)
+        {
+            if (TypeMultiplier > 1)
+            {
+                Console.WriteLine("It's super effective!!");
+            }
+            else if (TypeMultiplier == 0)
+            {
+                Console.WriteLine("It had no effect!");
+            }
+            else if (TypeMultiplier < 1)
+            {
+                Console.WriteLine("It's not very effective!");
+            }
         }
 
     }

@@ -26,7 +26,10 @@ namespace PokemonPurple
 
         int zoneChoiceInt;
         int activePokemonIndex = 0;
+        int rivalActivePokemonIndex = 0;
         int attackSelectionIndex;
+        int enemyAttackIndex;
+        int chanceToCatch;
 
         string battleChoiceString = " ";
 
@@ -364,10 +367,15 @@ namespace PokemonPurple
                 {
                     Console.WriteLine("The Poke Center is currently under construction and unavailable at this time. Please visit again later!");
                 }
-                else if(zoneChoiceInt == zoneList.Count())
+                else if(zoneChoiceInt == zoneList.Count())                                                                                                  //user is selecting indigo plateau
                 {
                     inRivalBattle = true;
-                    Console.WriteLine("The current league champion is in a meeting, please try again later!");
+                    print.DisplayRivalBattleMessage(player, rival, rivalActivePokemonIndex);
+                    UpdateRivalParty();
+                    while(rival.partyList.Count() > 0)
+                    {
+                        Battle();
+                    }
                 }
                 else
                 {
@@ -390,11 +398,7 @@ namespace PokemonPurple
             Random randomInt = new Random();
             int possiblePokemonListIndex = randomInt.Next(0, Zone.possiblePokemonList.Count());
             Console.WriteLine("You've encountered a wild " + Zone.possiblePokemonList[possiblePokemonListIndex].species + "!");
-            wild = Zone.possiblePokemonList[possiblePokemonListIndex];
-            wild.level = player.partyList[0].level - 1;
-            wild.maxHealthPoints = wild.level * 5;
-            wild.currentHealthPoints = wild.maxHealthPoints;
-            print.DisplayEnemyPokemonStats(wild);
+            GenerateWildPokemon(Zone, possiblePokemonListIndex);
             if (player.partyList.Count() > 1)
             {
                 Console.WriteLine("\nWhich Pokemon would you like to use?");
@@ -411,85 +415,9 @@ namespace PokemonPurple
         {
             while (inBattle == true && player.partyList.Count() > 0)
             {
-                print.DisplayBattleOptions(player, zoneList[zoneChoiceInt]);
+                print.DisplayBattleOptions(player, zoneList[zoneChoiceInt - 1], inRivalBattle);
                 battleChoiceString = ui.GetUserInputBattleSelection();
-                if (battleChoiceString.ToUpper().Equals("A"))
-                {
-                    Console.WriteLine(player.partyList[activePokemonIndex].species + "'s turn!");
-                    for (int movesListIndex = 0; movesListIndex < player.partyList[activePokemonIndex].moveList.Count(); movesListIndex++)
-                    {
-                        string currentMoveInfo = print.DisplayMoveStats(player.partyList[activePokemonIndex].moveList[movesListIndex]);
-                        Console.WriteLine("(" + (movesListIndex + 1) + ") " + currentMoveInfo);
-                    }
-                    attackSelectionIndex = ui.GetUserInputAttackSelection(player, activePokemonIndex) - 1;
-                    CalculateDamage(player.partyList[activePokemonIndex], wild, attackSelectionIndex);
-                    attackSelectionIndex = -1;
-                    CheckForWinOrLoss(player.partyList[activePokemonIndex], wild);
-                    if (inBattle == true)
-                    {
-                        Console.WriteLine(wild.species + "'s turn!");
-                        Random rnd = new Random();
-                        int enemyAttackIndex = rnd.Next(0, wild.moveList.Count() - 1);
-                        CalculateDamage(wild, player.partyList[activePokemonIndex], enemyAttackIndex);
-                        CheckForWinOrLoss(player.partyList[activePokemonIndex], wild);
-                    }
-                    if(player.partyList[activePokemonIndex].currentHealthPoints > 0 && wild.currentHealthPoints > 0)
-                    {
-                        print.DisplayCurrentBattleStats(player.partyList[activePokemonIndex], wild);
-                    }
-                }
-                else if (battleChoiceString.ToUpper().Equals("S"))
-                {
-                    if (player.partyList.Count() > 1)
-                    {
-                        Console.WriteLine("\nWhich Pokemon would you like to use?");
-                        for (int partyListIndex = 0; partyListIndex < player.partyList.Count(); partyListIndex++)
-                        {
-                            Console.WriteLine("(" + (partyListIndex + 1) + ") " + player.partyList[partyListIndex].species);
-                        }
-                        activePokemonIndex = (ui.GetUserInputActivePokemonSelection(player) - 1);
-                    }
-                    Console.WriteLine("Go " + player.partyList[activePokemonIndex].species + "!");
-                    //switch pokemon stuff
-                }
-                else if (battleChoiceString.ToUpper().Equals("T"))
-                {
-                    Random catchChance = new Random();
-                    int chanceToCatch = catchChance.Next(1, 11);
-
-                    Console.WriteLine("You threw a Poke Ball at " + wild.species + "!");
-                    Console.WriteLine("*wiggle*");
-                    Console.WriteLine("*wiggle*");
-                    Console.WriteLine("...*wiggle*...");
-                    if (wild.currentHealthPoints < wild.maxHealthPoints / 2)
-                    {
-                        chanceToCatch += 3;
-                    }
-                    if (chanceToCatch >= 6)
-                    {
-                        Random rivalPokemon = new Random();
-                        int rivalPokemonToAddIndex = rivalPokemon.Next(0, 3);
-                        Console.WriteLine("Congratulations, you caught " + wild.species + "!");
-                        wild.currentHealthPoints = wild.maxHealthPoints;
-                        player.partyList.Add(wild);
-                        rival.partyList.Add(zoneList[zoneChoiceInt].possiblePokemonList[rivalPokemonToAddIndex]);
-                        player.partyList[activePokemonIndex].currentHealthPoints = player.partyList[activePokemonIndex].maxHealthPoints;
-                    }
-                    else
-                    {
-                        Console.WriteLine("Oh no, " + wild.species + " got away! Better luck next time!");
-                        player.partyList[activePokemonIndex].currentHealthPoints = player.partyList[activePokemonIndex].maxHealthPoints;
-                    }
-                    zoneList[zoneChoiceInt].canCapturePokemon = false;
-                    inBattle = false;
-                    //catch stuff
-                }
-                else if (battleChoiceString.ToUpper().Equals("R"))
-                {
-                    Console.WriteLine("You got away!");
-                    inBattle = false;
-                    zoneList[zoneChoiceInt].canCapturePokemon = false;
-                }
+                DoBattleOption();
             }
         }
 
@@ -500,21 +428,34 @@ namespace PokemonPurple
                 Console.WriteLine("\n" + UserPokemon.species + " has defeated " + EnemyPokemon.species + "!");
                 UserPokemon.LevelUp(UserPokemon);
                 UserPokemon.currentHealthPoints = UserPokemon.maxHealthPoints;
-                inBattle = false;
-                zoneList[zoneChoiceInt].canCapturePokemon = false;
+                if (inRivalBattle == false)
+                {
+                    inBattle = false;
+                }
+                zoneList[zoneChoiceInt - 1].canCapturePokemon = false;
+                DetermineIfRivalCanContinue(EnemyPokemon);
             }
             else if(UserPokemon.currentHealthPoints <= 0)
             {
                 Console.WriteLine("\nYou have been defeated!");
                 Console.WriteLine(UserPokemon.species + " has been taken to the Pokemon Tower in Lavender Town...");
                 player.partyList.Remove(UserPokemon);
-                inBattle = false;
-                zoneList[zoneChoiceInt].canCapturePokemon = false;
+                if (inRivalBattle == false)
+                {
+                    inBattle = false;
+                }
+                zoneList[zoneChoiceInt - 1].canCapturePokemon = false;
                 if (player.partyList.Count() == 0)
                 {
                     inRivalBattle = true;
                     Console.WriteLine("Oh no, you're out of Pokemon! " + player.name + " blacked out...");
                 }
+                if(inRivalBattle == true && player.partyList.Count() > 0)
+                {
+                    SelectActivePokemon();
+                    Battle();
+                }
+
             }
         }
 
@@ -531,19 +472,185 @@ namespace PokemonPurple
             totalDamage = baseDamage * typeMultiplier;
             DefendingPokemon.currentHealthPoints -= (int)totalDamage;
             Console.WriteLine("\n" + AttackingPokemon.species + " used " + AttackingPokemon.moveList[MovesListIndex].name + "!");
-            if (typeMultiplier > 1)
-            {
-                Console.WriteLine("It's super effective!!");
-            }
-            else if (typeMultiplier == 0)
-            {
-                Console.WriteLine("It had no effect!");
-            }
-            else if (typeMultiplier < 1)
-            {
-                Console.WriteLine("It's not very effective!");
-            }
+            print.DisplayTypeMultiplierResult(typeMultiplier);
             Console.WriteLine(DefendingPokemon.species + " lost " + (int)totalDamage + " HP!\n\n");
+        }
+
+        
+        public void GetEnemyAttack()
+        {
+            Console.WriteLine(wild.species + "'s turn!");
+            Random rnd = new Random();
+            enemyAttackIndex = rnd.Next(0, wild.moveList.Count() - 1);
+        }
+
+        public void GetEnemyAttackForWildOrRival()
+        {
+            if (inBattle == true && inRivalBattle == false)
+            {
+                GetEnemyAttack();
+                CalculateDamage(wild, player.partyList[activePokemonIndex], enemyAttackIndex);
+                CheckForWinOrLoss(player.partyList[activePokemonIndex], wild);
+            }
+            else if (inBattle == true && inRivalBattle == true)
+            {
+                GetEnemyAttack();
+                CalculateDamage(rival.partyList[rivalActivePokemonIndex], player.partyList[activePokemonIndex], enemyAttackIndex);
+                CheckForWinOrLoss(player.partyList[activePokemonIndex], rival.partyList[rivalActivePokemonIndex]);
+                if (player.partyList[activePokemonIndex].currentHealthPoints > 0 && rival.partyList[rivalActivePokemonIndex].currentHealthPoints > 0)
+                {
+                    print.DisplayCurrentBattleStats(player.partyList[activePokemonIndex], rival.partyList[rivalActivePokemonIndex]);
+
+                }
+            }
+        }
+
+        public void SelectActivePokemon()
+        {
+            Console.WriteLine("\nWhich Pokemon would you like to use?");
+            for (int partyListIndex = 0; partyListIndex < player.partyList.Count(); partyListIndex++)
+            {
+                Console.WriteLine("(" + (partyListIndex + 1) + ") " + player.partyList[partyListIndex].species);
+            }
+            activePokemonIndex = (ui.GetUserInputActivePokemonSelection(player) - 1);
+        }
+
+        public void GetChanceToCatch()
+        {
+            Random catchChance = new Random();
+            chanceToCatch = catchChance.Next(1, 11);
+
+            Console.WriteLine("You threw a Poke Ball at " + wild.species + "!");
+            Console.WriteLine("*wiggle*");
+            Console.WriteLine("*wiggle*");
+            Console.WriteLine("...*wiggle*...");
+        }
+
+        public void DetermineIfPokemonIsCaptured()
+        {
+            if (chanceToCatch >= 6)
+            {
+                Random rivalPokemon = new Random();
+                int rivalPokemonToAddIndex = rivalPokemon.Next(0, 3);
+                Console.WriteLine("Congratulations, you caught " + wild.species + "!");
+                wild.currentHealthPoints = wild.maxHealthPoints;
+                player.partyList.Add(wild);
+                rival.partyList.Add(zoneList[zoneChoiceInt].possiblePokemonList[rivalPokemonToAddIndex]);
+                player.partyList[activePokemonIndex].currentHealthPoints = player.partyList[activePokemonIndex].maxHealthPoints;
+            }
+            else
+            {
+                Console.WriteLine("Oh no, " + wild.species + " got away! Better luck next time!");
+                player.partyList[activePokemonIndex].currentHealthPoints = player.partyList[activePokemonIndex].maxHealthPoints;
+            }
+            zoneList[zoneChoiceInt].canCapturePokemon = false;
+            inBattle = false;
+        }
+
+        public void RunAway()
+        {
+            Console.WriteLine("You got away!");
+            inBattle = false;
+            zoneList[zoneChoiceInt].canCapturePokemon = false;
+        }
+
+        public void DoBattleOption()
+        {
+            if (battleChoiceString.ToUpper().Equals("A"))
+            {
+                Console.WriteLine(player.partyList[activePokemonIndex].species + "'s turn!");
+                print.DisplayMovesList(player, activePokemonIndex);
+                attackSelectionIndex = ui.GetUserInputAttackSelection(player, activePokemonIndex) - 1;
+                GetDamage();
+                attackSelectionIndex = - 1;
+                DetermineCheckForWinOrLossParameters();
+                GetEnemyAttackForWildOrRival();
+                if (player.partyList[activePokemonIndex].currentHealthPoints > 0 && wild.currentHealthPoints > 0 && inRivalBattle == false)
+                {
+                    print.DisplayCurrentBattleStats(player.partyList[activePokemonIndex], wild);
+                }
+            }
+            else if (battleChoiceString.ToUpper().Equals("S"))
+            {
+                if (player.partyList.Count() > 1)
+                {
+                    SelectActivePokemon();
+                }
+                Console.WriteLine("Go " + player.partyList[activePokemonIndex].species + "!");
+            }
+            else if (battleChoiceString.ToUpper().Equals("T") && inRivalBattle == false)
+            {
+                GetChanceToCatch();
+                if (wild.currentHealthPoints < wild.maxHealthPoints / 2)
+                {
+                    chanceToCatch += 3;
+                }
+                DetermineIfPokemonIsCaptured();
+            }
+            else if (battleChoiceString.ToUpper().Equals("R") && inRivalBattle == false)
+            {
+                RunAway();
+            }
+        }
+
+        public void UpdateRivalParty()
+        {
+            for (int rivalPartyIndex = 0; rivalPartyIndex < rival.partyList.Count(); rivalPartyIndex++)
+            {
+                rival.partyList[rivalPartyIndex].level = player.partyList[rivalPartyIndex].level;
+                rival.partyList[rivalPartyIndex].maxHealthPoints = rival.partyList[rivalPartyIndex].level * 5;
+                rival.partyList[rivalPartyIndex].currentHealthPoints = rival.partyList[rivalPartyIndex].maxHealthPoints;
+            }
+        }
+
+        public void GenerateWildPokemon(Zones Zone, int PossiblePokemonListIndex)
+        {
+            wild = Zone.possiblePokemonList[PossiblePokemonListIndex];
+            wild.level = player.partyList[0].level - 1;
+            wild.maxHealthPoints = wild.level * 5;
+            wild.currentHealthPoints = wild.maxHealthPoints;
+            print.DisplayEnemyPokemonStats(wild);
+        }
+
+        public void GetDamage()
+        {
+            if (inRivalBattle == false)
+            {
+                CalculateDamage(player.partyList[activePokemonIndex], wild, attackSelectionIndex);
+            }
+            else
+            {
+                CalculateDamage(player.partyList[activePokemonIndex], rival.partyList[rivalActivePokemonIndex], attackSelectionIndex);
+            }
+        }
+
+        public void DetermineCheckForWinOrLossParameters()
+        {
+            if (inRivalBattle == false)
+            {
+                CheckForWinOrLoss(player.partyList[activePokemonIndex], wild);
+            }
+            else
+            {
+                CheckForWinOrLoss(player.partyList[activePokemonIndex], rival.partyList[rivalActivePokemonIndex]);
+            }
+        }
+
+        public void DetermineIfRivalCanContinue(Pokemon EnemyPokemon)
+        {
+            if (inRivalBattle == true && rival.partyList.Contains(EnemyPokemon))
+            {
+                rival.partyList.Remove(EnemyPokemon);
+                if (rival.partyList.Count() == 0)
+                {
+                    Console.WriteLine("Congratulations, you beat " + rival.name + " and won the game!");
+                }
+                else
+                {
+                    Console.WriteLine("\n" + rival.name + ": " + rival.partyList[rivalActivePokemonIndex].species + ", I choose you!!");
+                    Battle();
+                }
+            }
         }
 
     }
